@@ -1,16 +1,19 @@
-# hackermeshi
+# ハッカー飯予約アプリ
 
-A new Flutter project.
+ハッカー飯の Flutter × Supabase ハンズオンの中で作った予約アプリです！
 
-## Getting Started
+- 背景の白い空いている予約枠タップで予約！
+- 予約済みの枠は赤色表示
+- 予約済みの枠を予約しようとすると警告文表示
 
-This project is a starting point for a Flutter application.
+## テーブル定義
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```sql
+create table reservations (
+  id uuid default uuid_generate_v4() not null primary key,
+  time_slot tstzrange not null,
+  user_id uuid default auth.uid() not null references auth.users(id),
+  title text not null,
+  exclude using gist (time_slot WITH &&)
+);
+```
