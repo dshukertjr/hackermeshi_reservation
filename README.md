@@ -1,6 +1,8 @@
 # ハッカー飯予約アプリ
 
-ハッカー飯の Flutter × Supabase ハンズオンの中で作った予約アプリです！
+ハッカー飯の Flutter × Supabase ハンズオンの中で作った予約アプリ！
+
+![イメージ画像](https://raw.githubusercontent.com/dshukertjr/hackermeshi_reservation/main/reservation.png)
 
 - 背景の白い空いている予約枠タップで予約！
 - 予約済みの枠は赤色表示
